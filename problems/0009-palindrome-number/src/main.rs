@@ -3,7 +3,8 @@ fn is_palindrome(x: i32) -> bool {
         return false;
     }
 
-    x.to_string() == x.to_string().chars().rev().collect::<String>()
+    let s = x.to_string();
+    s == s.chars().rev().collect::<String>()
 }
 
 fn main() {

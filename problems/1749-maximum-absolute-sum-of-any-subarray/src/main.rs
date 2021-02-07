@@ -1,17 +1,17 @@
 fn max_absolute_sum(nums: Vec<i32>) -> i32 {
-    let mut accs: Vec<i32> = vec![0; nums.len() + 1];
-    for (i, &n) in nums.iter().enumerate() {
-        accs[i + 1] = accs[i] + n;
+    let mut max = 0;
+    let mut min = 0;
+    let mut max_add = 0;
+    let mut min_add = 0;
+    for &n in nums.iter() {
+        max_add = std::cmp::max(max_add + n, n);
+        max = std::cmp::max(max, max_add);
+
+        min_add = std::cmp::min(min_add + n, n);
+        min = std::cmp::min(min, min_add);
     }
 
-    let mut ret = 0;
-    for (i, &acc) in accs.iter().enumerate() {
-        for j in 0..i {
-            ret = std::cmp::max(ret, (acc - accs[j]).abs())
-        }
-    }
-
-    ret
+    std::cmp::max(max.abs(), min.abs())
 }
 
 fn main() {

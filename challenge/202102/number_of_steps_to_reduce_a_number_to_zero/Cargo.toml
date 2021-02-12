@@ -1,0 +1,9 @@
+[package]
+name = "number_of_steps_to_reduce_a_number_to_zero"
+version = "0.1.0"
+authors = ["Shohei YOSHIDA <syohex@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]

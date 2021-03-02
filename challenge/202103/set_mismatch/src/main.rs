@@ -1,22 +1,17 @@
-use std::collections::HashMap;
-
 fn find_error_nums(nums: Vec<i32>) -> Vec<i32> {
-    let mut h: HashMap<i32, i32> = HashMap::new();
+    let mut v = vec![0; nums.len()];
     for &n in &nums {
-        *h.entry(n).or_insert(0) += 1;
+        let index = (n - 1) as usize;
+        v[index] = v[index] + 1;
     }
 
     let mut repeated = 0;
     let mut missed = 0;
-
-    for i in 1..=nums.len() {
-        let n = i as i32;
-        if let Some(&count) = h.get(&n) {
-            if count == 2 {
-                repeated = n;
-            }
-        } else {
-            missed = n;
+    for i in 0..nums.len() {
+        if v[i] == 2 {
+            repeated = (i + 1) as i32;
+        } else if v[i] == 0 {
+            missed = (i + 1) as i32;
         }
     }
 

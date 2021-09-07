@@ -1,5 +1,0 @@
-* text=auto
-
-*.rs eol=lf
-Cargo.toml eol=lf
-Cargo.lock eol=lf

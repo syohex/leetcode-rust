@@ -33,7 +33,6 @@ impl UndergroundSystem {
 
     fn get_average_time(&self, start_station: String, end_station: String) -> f64 {
         let key = (start_station, end_station);
-        dbg!(&self.time, &key);
         let (num, time) = self.time.get(&key).unwrap();
         *time / *num as f64
     }

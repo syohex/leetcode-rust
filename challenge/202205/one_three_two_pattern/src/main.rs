@@ -4,18 +4,23 @@ fn find132pattern(nums: Vec<i32>) -> bool {
         return false;
     }
 
-    let mut min = std::i32::MAX;
-    for i in 0..len {
-        min = std::cmp::min(min, nums[i]);
-        if min == nums[i] {
-            continue;
+    let mut mins = vec![0; len];
+    mins[0] = nums[0];
+    for i in 1..len {
+        mins[i] = std::cmp::min(mins[i - 1], nums[i]);
+    }
+
+    let mut stack = vec![];
+    for i in (1..len).rev() {
+        while !stack.is_empty() && *stack.last().unwrap() <= mins[i] {
+            stack.pop();
         }
 
-        for j in i + 1..len {
-            if min < nums[j] && nums[j] < nums[i] {
-                return true;
-            }
+        if !stack.is_empty() && *stack.last().unwrap() < nums[i] {
+            return true;
         }
+
+        stack.push(nums[i]);
     }
 
     false
@@ -38,6 +43,10 @@ fn test_find132pattern() {
     }
     {
         let nums = vec![-1, 3, 2, 0];
+        assert!(find132pattern(nums));
+    }
+    {
+        let nums = vec![-2, 1, -1];
         assert!(find132pattern(nums));
     }
 }

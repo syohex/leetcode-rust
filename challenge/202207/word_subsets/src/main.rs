@@ -1,4 +1,4 @@
-fn word_subsets(a: Vec<String>, b: Vec<String>) -> Vec<String> {
+fn word_subsets(words1: Vec<String>, words2: Vec<String>) -> Vec<String> {
     fn to_freq(s: &str) -> Vec<i32> {
         s.bytes().fold(vec![0; 26], |mut acc, b| {
             let index = (b - b'a') as usize;
@@ -11,13 +11,20 @@ fn word_subsets(a: Vec<String>, b: Vec<String>) -> Vec<String> {
         a.iter().zip(b).all(|(i, j)| i >= j)
     }
 
-    let a_freqs: Vec<Vec<i32>> = a.iter().map(|s| to_freq(s)).collect();
-    let b_freqs: Vec<Vec<i32>> = b.iter().map(|s| to_freq(s)).collect();
+    let mut b_freq = vec![0; 26];
+    for word in words2 {
+        let freq = to_freq(&word);
+        for i in 0..26 {
+            b_freq[i] = std::cmp::max(b_freq[i], freq[i]);
+        }
+    }
+
+    let a_freqs: Vec<Vec<i32>> = words1.iter().map(|s| to_freq(s)).collect();
 
     a_freqs
         .into_iter()
-        .zip(a)
-        .filter(|(a_freq, _)| b_freqs.iter().all(|b_freq| is_subset(a_freq, b_freq)))
+        .zip(words1)
+        .filter(|(a_freq, _)| is_subset(a_freq, &b_freq))
         .map(|(_, word)| word)
         .collect()
 }

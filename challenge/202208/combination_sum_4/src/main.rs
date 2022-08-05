@@ -1,26 +1,16 @@
 fn combination_sum4(nums: Vec<i32>, target: i32) -> i32 {
-    use std::collections::HashMap;
+    let mut dp = vec![0u128; (target + 1) as usize];
+    dp[0] = 1;
 
-    fn f(target: i32, nums: &[i32], cache: &mut HashMap<i32, i32>) -> i32 {
-        if target == 0 {
-            return 1;
-        }
-
-        if let Some(num) = cache.get(&target) {
-            return *num;
-        }
-
-        nums.iter().fold(0, |acc, num| {
-            if target - *num < 0 {
-                acc
-            } else {
-                acc + f(target - num, nums, cache)
+    for i in 1..=target {
+        for num in &nums {
+            if i - num >= 0 {
+                dp[i as usize] += dp[(i - num) as usize];
             }
-        })
+        }
     }
 
-    let mut cache = HashMap::new();
-    f(target, &nums, &mut cache)
+    dp[target as usize] as i32
 }
 
 fn main() {
@@ -60,6 +50,6 @@ fn test_combination_sum4() {
             880, 890, 900, 910, 920, 930, 940, 950, 960, 970, 980, 990, 111,
         ];
         let ret = combination_sum4(nums, 999);
-        assert_eq!(ret, 88);
+        assert_eq!(ret, 1);
     }
 }

@@ -1,41 +1,17 @@
 fn maximum_score(nums: Vec<i32>, multipliers: Vec<i32>) -> i32 {
-    use std::collections::HashMap;
+    let n = nums.len();
+    let m = multipliers.len();
+    let mut dp = vec![vec![0; m + 1]; m + 1];
 
-    fn f(
-        left: i32,
-        right: i32,
-        i: usize,
-        nums: &Vec<i32>,
-        multipliers: &Vec<i32>,
-        cache: &mut HashMap<(i32, i32, usize), i32>,
-    ) -> i32 {
-        if i >= multipliers.len() {
-            return 0;
+    for i in (0..m).rev() {
+        for left in (0..=i).rev() {
+            let val1 = multipliers[i] * nums[left] + dp[i + 1][left + 1];
+            let val2 = multipliers[i] * nums[n - 1 - (i - left)] + dp[i + 1][left];
+            dp[i][left] = std::cmp::max(val1, val2);
         }
-
-        if let Some(v) = cache.get(&(left, right, i)) {
-            return *v;
-        }
-
-        let left_value = f(left + 1, right, i + 1, nums, multipliers, cache)
-            + nums[left as usize] * multipliers[i];
-        let right_value = f(left, right - 1, i + 1, nums, multipliers, cache)
-            + nums[right as usize] * multipliers[i];
-
-        let v = std::cmp::max(left_value, right_value);
-        cache.insert((left, right, i), v);
-        v
     }
 
-    let mut cache = HashMap::new();
-    f(
-        0,
-        (nums.len() - 1) as i32,
-        0,
-        &nums,
-        &multipliers,
-        &mut cache,
-    )
+    dp[0][0]
 }
 
 fn main() {

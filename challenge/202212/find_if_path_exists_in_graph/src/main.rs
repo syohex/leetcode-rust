@@ -1,6 +1,7 @@
 pub fn valid_path(n: i32, edges: Vec<Vec<i32>>, source: i32, destination: i32) -> bool {
     use std::collections::HashMap;
     use std::collections::HashSet;
+    use std::collections::VecDeque;
 
     let mut h: HashMap<i32, Vec<i32>> = HashMap::new();
     for edge in edges {
@@ -21,19 +22,24 @@ pub fn valid_path(n: i32, edges: Vec<Vec<i32>>, source: i32, destination: i32) -
     }
 
     let mut visited: HashSet<i32> = HashSet::new();
-    let mut q = vec![source];
+    let mut q = VecDeque::new();
+    q.push_back(source);
+
     while !q.is_empty() {
-        let next = q.pop().unwrap();
-        if next == destination {
-            return true;
-        }
+        let len = q.len();
 
-        visited.insert(next);
+        for _ in 0..len {
+            let next = q.pop_front().unwrap();
+            if next == destination {
+                return true;
+            }
 
-        if let Some(v) = h.get(&next) {
-            for node in v {
-                if !visited.contains(node) {
-                    q.push(*node);
+            visited.insert(next);
+            if let Some(v) = h.get(&next) {
+                for node in v {
+                    if !visited.contains(node) {
+                        q.push_back(*node);
+                    }
                 }
             }
         }

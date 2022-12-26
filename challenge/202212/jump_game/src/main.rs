@@ -1,18 +1,13 @@
 fn can_jump(nums: Vec<i32>) -> bool {
-    let goal = nums.len() - 1;
-    let mut q = vec![0usize];
+    let mut can_jump_pos = nums.len() - 1;
 
-    while let Some(p) = q.pop() {
-        if p >= goal {
-            return true;
-        }
-
-        for i in 1..=nums[p] {
-            q.push(p + i as usize);
+    for i in (0..nums.len()).rev() {
+        if i + nums[i] as usize >= can_jump_pos {
+            can_jump_pos = i;
         }
     }
 
-    false
+    can_jump_pos == 0
 }
 
 fn main() {

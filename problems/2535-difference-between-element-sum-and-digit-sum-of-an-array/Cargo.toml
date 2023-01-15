@@ -1,0 +1,8 @@
+[package]
+name = "difference-between-element-sum-and-digit-sum-of-an-array"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]

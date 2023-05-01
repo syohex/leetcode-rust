@@ -1,0 +1,8 @@
+[package]
+name = "average_salary_exclusing_the_minimum_and_maximum_salary"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]

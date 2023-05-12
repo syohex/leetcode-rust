@@ -1,21 +1,24 @@
 fn most_points(questions: Vec<Vec<i32>>) -> i64 {
     let len = questions.len();
-    let mut dp = vec![0i64; len];
-    let mut ret = 0i64;
-
-    for i in 0..len {
-        let point = questions[i][0] as i64;
-        dp[i] = point;
-        for j in 0..i {
-            if questions[j][1] as usize + j < i {
-                dp[i] = std::cmp::max(dp[i], dp[j] + point);
-            }
-        }
-
-        ret = std::cmp::max(ret, dp[i]);
+    if len == 1 {
+        return questions[0][0] as i64;
     }
 
-    ret
+    let mut dp = vec![0i64; len];
+
+    dp[len - 1] = questions[len - 1][0] as i64;
+    for i in (0..=len - 2).rev() {
+        dp[i] = questions[i][0] as i64;
+
+        let skip = questions[i][1] as usize;
+        if i + skip + 1 < len {
+            dp[i] += dp[i + skip + 1];
+        }
+
+        dp[i] = std::cmp::max(dp[i], dp[i + 1]);
+    }
+
+    dp[0]
 }
 
 fn main() {

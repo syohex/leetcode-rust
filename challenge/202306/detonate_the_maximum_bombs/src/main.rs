@@ -4,14 +4,15 @@ fn maximum_detonation(bombs: Vec<Vec<i32>>) -> i32 {
 
         let mut visited = HashSet::new();
         let mut q = vec![i];
+        visited.insert(i);
 
         while !q.is_empty() {
             let pos = q.pop().unwrap();
-            visited.insert(pos);
 
             for next in &graph[pos] {
                 if !visited.contains(next) {
                     q.push(*next);
+                    visited.insert(*next);
                 }
             }
         }

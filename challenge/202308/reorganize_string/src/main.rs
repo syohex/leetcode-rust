@@ -1,37 +1,40 @@
 fn reorganize_string(s: String) -> String {
-    fn f(prev: usize, len: usize, acc: &mut String, table: &mut Vec<usize>) -> bool {
-        if acc.len() == len {
-            return true;
-        }
-
-        for i in 0..26 {
-            if table[i] == 0 || i == prev {
-                continue;
-            }
-
-            acc.push((i as u8 + b'a') as char);
-            table[i] -= 1;
-            if f(i, len, acc, table) {
-                return true;
-            }
-            table[i] += 1;
-            acc.pop();
-        }
-
-        false
-    }
+    use std::collections::BinaryHeap;
 
     let mut table = vec![0; 26];
     for b in s.bytes() {
         table[(b - b'a') as usize] += 1;
     }
 
-    let mut acc = String::new();
-    if f(27, s.len(), &mut acc, &mut table) {
-        acc
-    } else {
-        "".to_string()
+    let mut bq = BinaryHeap::new();
+    for i in 0..26 {
+        if table[i] > 0 {
+            bq.push((table[i], (i as u8 + b'a') as char));
+        }
     }
+
+    let mut ret = String::new();
+    while let Some((count, c)) = bq.pop() {
+        if ret.is_empty() || c != ret.chars().last().unwrap() {
+            ret.push(c);
+            if count - 1 >= 1 {
+                bq.push((count - 1, c));
+            }
+        } else {
+            if let Some((count2, c2)) = bq.pop() {
+                ret.push(c2);
+                if count2 - 1 >= 1 {
+                    bq.push((count2 - 1, c2));
+                }
+
+                bq.push((count, c));
+            } else {
+                return "".to_string();
+            }
+        }
+    }
+
+    ret
 }
 
 fn main() {

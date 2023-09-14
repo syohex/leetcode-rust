@@ -8,14 +8,9 @@ fn find_itenerary(tickets: Vec<Vec<String>>) -> Vec<String> {
         limit: usize,
         visited: &mut Vec<&'a str>,
         tickets: &mut HashMap<(&'a str, &'a str), i32>,
-        ret: &mut Vec<&'a str>,
-    ) {
+    ) -> Option<Vec<String>> {
         if used == limit {
-            if ret.is_empty() || visited < ret {
-                *ret = visited.clone();
-            }
-
-            return;
+            return Some(visited.iter().map(|s| s.to_string()).collect());
         }
 
         if let Some(nexts) = graph.get(airport) {
@@ -30,13 +25,18 @@ fn find_itenerary(tickets: Vec<Vec<String>>) -> Vec<String> {
                     tickets.insert(key, count - 1);
                     visited.push(next);
 
-                    f(next, used + 1, graph, limit, visited, tickets, ret);
+                    let ret = f(next, used + 1, graph, limit, visited, tickets);
+                    if ret.is_some() {
+                        return ret;
+                    }
 
                     visited.pop();
                     tickets.insert(key, count);
                 }
             }
         }
+
+        None
     }
 
     let limit = tickets.len();
@@ -49,11 +49,16 @@ fn find_itenerary(tickets: Vec<Vec<String>>) -> Vec<String> {
             .or_insert(0) += 1;
     }
 
-    let mut visited = vec!["JFK"];
-    let mut ret = vec![];
+    for (_, v) in graph.iter_mut() {
+        v.sort_unstable();
+    }
 
-    f("JFK", 0, &graph, limit, &mut visited, &mut used, &mut ret);
-    ret.into_iter().map(|s| s.to_string()).collect()
+    let mut visited = vec!["JFK"];
+
+    match f("JFK", 0, &graph, limit, &mut visited, &mut used) {
+        Some(v) => v,
+        None => panic!("never reach here"),
+    }
 }
 
 fn main() {

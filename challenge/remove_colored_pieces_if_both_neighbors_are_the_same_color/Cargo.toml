@@ -1,0 +1,8 @@
+[package]
+name = "remove_colored_pieces_if_both_neighbors_are_the_same_color"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]

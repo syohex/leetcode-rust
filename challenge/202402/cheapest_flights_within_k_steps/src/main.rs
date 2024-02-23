@@ -1,4 +1,4 @@
-fn find_cheapest_price(_n: i32, flights: Vec<Vec<i32>>, src: i32, dst: i32, k: i32) -> i32 {
+fn find_cheapest_price(n: i32, flights: Vec<Vec<i32>>, src: i32, dst: i32, k: i32) -> i32 {
     use std::collections::HashMap;
     use std::collections::VecDeque;
 
@@ -13,6 +13,8 @@ fn find_cheapest_price(_n: i32, flights: Vec<Vec<i32>>, src: i32, dst: i32, k: i
     let mut q: VecDeque<(i32, i32)> = VecDeque::new();
     q.push_back((src, 0));
 
+    let mut min_costs = vec![std::i32::MAX; n as usize];
+
     let mut ret = std::i32::MAX;
     let mut step = -1;
     while step <= k && !q.is_empty() {
@@ -20,6 +22,12 @@ fn find_cheapest_price(_n: i32, flights: Vec<Vec<i32>>, src: i32, dst: i32, k: i
 
         for _ in 0..len {
             let (node, cost) = q.pop_front().unwrap();
+
+            if cost >= min_costs[node as usize] {
+                continue;
+            }
+            min_costs[node as usize] = cost;
+
             if node == dst {
                 ret = std::cmp::min(ret, cost);
             }

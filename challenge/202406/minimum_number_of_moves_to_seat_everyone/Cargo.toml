@@ -1,0 +1,6 @@
+[package]
+name = "minimum_number_of_moves_to_seat_everyone"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

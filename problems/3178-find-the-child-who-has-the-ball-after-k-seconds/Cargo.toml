@@ -1,0 +1,6 @@
+[package]
+name = "find-the-child-who-has-the-ball-after-k-seconds"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

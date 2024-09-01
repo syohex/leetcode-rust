@@ -1,0 +1,6 @@
+[package]
+name = "convert_1d_array_into_2d_array"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

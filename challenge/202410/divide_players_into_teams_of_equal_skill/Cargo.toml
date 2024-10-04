@@ -1,0 +1,6 @@
+[package]
+name = "divide_players_into_teams_of_equal_skill"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

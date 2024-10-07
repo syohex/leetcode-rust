@@ -1,0 +1,6 @@
+[package]
+name = "minimum_string_length_after_removing_substrings"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

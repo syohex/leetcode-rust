@@ -1,0 +1,6 @@
+[package]
+name = "minimum_add_to_make_parentheses_valid"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

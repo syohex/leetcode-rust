@@ -1,0 +1,6 @@
+[package]
+name = "count_number_of_maximum_bitwise_or_subsets"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

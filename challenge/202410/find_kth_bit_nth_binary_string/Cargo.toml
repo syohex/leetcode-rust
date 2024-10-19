@@ -1,0 +1,6 @@
+[package]
+name = "find_kth_bit_nth_binary_string"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

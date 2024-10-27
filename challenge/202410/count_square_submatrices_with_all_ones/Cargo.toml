@@ -1,0 +1,6 @@
+[package]
+name = "count_square_submatrices_with_all_ones"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

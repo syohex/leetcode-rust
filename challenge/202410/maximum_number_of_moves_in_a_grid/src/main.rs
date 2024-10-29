@@ -1,22 +1,31 @@
 fn max_moves(grid: Vec<Vec<i32>>) -> i32 {
     let (rows, cols) = (grid.len(), grid[0].len());
-    let mut q: Vec<(usize, usize)> = (0..rows).into_iter().map(|i| (i, 0)).collect();
+    let mut q = vec![];
+    let mut checked = vec![vec![false; cols]; rows];
+
+    for i in 0..rows {
+        q.push((i, 0));
+        checked[i][0] = true;
+    }
 
     let mut ret = 0;
     while !q.is_empty() {
         let (i, j) = q.pop().unwrap();
-        ret = std::cmp::max(ret, j as i32);
 
-        if j + 1 < cols {
-            if i >= 1 && grid[i][j] < grid[i - 1][j + 1] {
-                q.push((i - 1, j + 1));
-            }
-            if grid[i][j] < grid[i][j + 1] {
-                q.push((i, j + 1));
-            }
-            if i + 1 < rows && grid[i][j] < grid[i + 1][j + 1] {
-                q.push((i + 1, j + 1));
-            }
+        checked[i][j] = true;
+        ret = std::cmp::max(ret, j as i32);
+        if j == cols - 1 {
+            break;
+        }
+
+        if i >= 1 && !checked[i - 1][j + 1] && grid[i][j] < grid[i - 1][j + 1] {
+            q.push((i - 1, j + 1));
+        }
+        if !checked[i][j + 1] && grid[i][j] < grid[i][j + 1] {
+            q.push((i, j + 1));
+        }
+        if i + 1 < rows && !checked[i + 1][j + 1] && grid[i][j] < grid[i + 1][j + 1] {
+            q.push((i + 1, j + 1));
         }
     }
 

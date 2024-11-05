@@ -1,0 +1,6 @@
+[package]
+name = "minimum_number_of_changes_to_make_binary_string_beautiful"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

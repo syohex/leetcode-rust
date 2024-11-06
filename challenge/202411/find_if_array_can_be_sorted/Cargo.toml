@@ -1,0 +1,6 @@
+[package]
+name = "find_if_array_can_be_sorted"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

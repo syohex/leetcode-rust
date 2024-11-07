@@ -1,36 +1,15 @@
 fn largest_combination(candidates: Vec<i32>) -> i32 {
-    use std::collections::HashMap;
+    let mut bits = vec![0; 31];
 
-    fn f(
-        pos: usize,
-        candidates: &Vec<i32>,
-        acc: i32,
-        len: i32,
-        cache: &mut HashMap<(usize, i32, i32), i32>,
-    ) -> i32 {
-        if pos >= candidates.len() {
-            return len;
-        }
-
-        let key = (pos, acc, len);
-        if let Some(&v) = cache.get(&key) {
-            return v;
-        }
-
-        let mut ret = f(pos + 1, candidates, acc, len, cache);
-        for i in pos..candidates.len() {
-            let tmp = acc & candidates[i];
-            if tmp != 0 {
-                ret = std::cmp::max(ret, f(i + 1, candidates, tmp, len + 1, cache));
+    for i in 0..31 {
+        for &num in &candidates {
+            if num & (1 << i) != 0 {
+                bits[i] += 1;
             }
         }
-
-        cache.insert(key, ret);
-        ret
     }
 
-    let mut cache = HashMap::new();
-    f(0, &candidates, 0x7fffffff, 0, &mut cache)
+    bits.into_iter().max().unwrap()
 }
 
 fn main() {

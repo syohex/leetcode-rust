@@ -1,0 +1,6 @@
+[package]
+name = "shortest_subarray_with_at_least_k2"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

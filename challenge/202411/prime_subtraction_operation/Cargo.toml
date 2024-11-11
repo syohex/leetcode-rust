@@ -1,0 +1,6 @@
+[package]
+name = "prime_subtraction_operation"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

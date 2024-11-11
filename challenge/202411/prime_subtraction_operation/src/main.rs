@@ -15,19 +15,14 @@ fn prime_sub_operation(nums: Vec<i32>) -> bool {
         }
     }
 
-    let mut nums = nums;
-    for i in 0..nums.len() {
-        let diff = if i == 0 {
-            nums[i]
-        } else {
-            nums[i] - nums[i - 1]
-        };
+    let mut prev = 0;
+    for num in nums {
+        let diff = num - prev;
         if diff <= 0 {
             return false;
         }
 
-        let largest_prime = nearest_primes[diff as usize - 1];
-        nums[i] -= largest_prime;
+        prev = num - nearest_primes[diff as usize - 1];
     }
 
     true

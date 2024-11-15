@@ -1,0 +1,6 @@
+[package]
+name = "shortest_subarray_to_removed_to_make_array_sorted"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

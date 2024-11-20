@@ -1,0 +1,6 @@
+[package]
+name = "take_k_of_each_character_from_left_and_right"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

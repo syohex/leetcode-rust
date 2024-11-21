@@ -4,6 +4,7 @@ fn count_unguarded(m: i32, n: i32, guards: Vec<Vec<i32>>, walls: Vec<Vec<i32>>) 
         UnGuarded,
         Wall,
         Guarded,
+        Guard,
     }
 
     let (m, n) = (m as usize, n as usize);
@@ -15,35 +16,36 @@ fn count_unguarded(m: i32, n: i32, guards: Vec<Vec<i32>>, walls: Vec<Vec<i32>>) 
 
     for guard in &guards {
         let (row, col) = (guard[0] as usize, guard[1] as usize);
-        matrix[row][col] = State::Guarded;
+        matrix[row][col] = State::Guard;
 
-        for i in (0..row).rev() {
-            match matrix[i][col] {
-                State::UnGuarded => matrix[i][col] = State::Guarded,
-                State::Wall => break,
-                State::Guarded => (),
+        let mut i = row as i32 - 1;
+        while i >= 0 {
+            match matrix[i as usize][col] {
+                State::Wall | State::Guard => break,
+                _ => matrix[i as usize][col] = State::Guarded,
             }
+            i -= 1;
         }
 
         for i in row + 1..m {
             match matrix[i][col] {
-                State::UnGuarded => matrix[i][col] = State::Guarded,
-                State::Wall => break,
-                State::Guarded => (),
+                State::Wall | State::Guard => break,
+                _ => matrix[i][col] = State::Guarded,
             }
         }
-        for i in (0..col).rev() {
-            match matrix[row][i] {
-                State::UnGuarded => matrix[row][i] = State::Guarded,
-                State::Wall => break,
-                State::Guarded => (),
+
+        let mut j = col as i32 - 1;
+        while j >= 0 {
+            match matrix[row][j as usize] {
+                State::Wall | State::Guard => break,
+                _ => matrix[row][j as usize] = State::Guarded,
             }
+            j -= 1;
         }
         for i in col + 1..n {
             match matrix[row][i] {
-                State::UnGuarded => matrix[row][i] = State::Guarded,
-                State::Wall => break,
-                State::Guarded => (),
+                State::Wall | State::Guard => break,
+                _ => matrix[row][i] = State::Guarded,
             }
         }
     }

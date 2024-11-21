@@ -1,0 +1,6 @@
+[package]
+name = "count_unguarded_cells_in_the_grid"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

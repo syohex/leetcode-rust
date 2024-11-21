@@ -13,10 +13,12 @@ fn count_unguarded(m: i32, n: i32, guards: Vec<Vec<i32>>, walls: Vec<Vec<i32>>) 
     for wall in &walls {
         matrix[wall[0] as usize][wall[1] as usize] = State::Wall;
     }
+    for guard in &guards {
+        matrix[guard[0] as usize][guard[1] as usize] = State::Guard;
+    }
 
     for guard in &guards {
         let (row, col) = (guard[0] as usize, guard[1] as usize);
-        matrix[row][col] = State::Guard;
 
         let mut i = row as i32 - 1;
         while i >= 0 {

@@ -1,0 +1,6 @@
+[package]
+name = "shortest_distance_after_road_addition_queries1"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

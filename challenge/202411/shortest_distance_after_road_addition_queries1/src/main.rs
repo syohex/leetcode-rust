@@ -15,6 +15,7 @@ fn shortest_distance_after_queries(n: i32, queries: Vec<Vec<i32>>) -> Vec<i32> {
         let mut q = VecDeque::new();
         q.push_back(0);
 
+        let mut visited = vec![false; n];
         let mut steps = 0;
         'outer: while !q.is_empty() {
             let len = q.len();
@@ -25,8 +26,12 @@ fn shortest_distance_after_queries(n: i32, queries: Vec<Vec<i32>>) -> Vec<i32> {
                     break 'outer;
                 }
 
-                for next in &graph[node] {
-                    q.push_back(*next);
+                visited[node] = true;
+
+                for &next in &graph[node] {
+                    if !visited[next] {
+                        q.push_back(next);
+                    }
                 }
             }
 

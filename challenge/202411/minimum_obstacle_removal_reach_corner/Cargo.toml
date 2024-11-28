@@ -1,0 +1,6 @@
+[package]
+name = "minimum_obstacle_removal_reach_corner"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

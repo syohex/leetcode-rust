@@ -7,14 +7,15 @@ fn minimum_time(grid: Vec<Vec<i32>>) -> i32 {
     }
 
     let (rows, cols) = (grid.len(), grid[0].len());
+    let mut min_times = vec![vec![std::i32::MAX; cols]; rows];
     let mut q = BinaryHeap::new();
-    q.push((Reverse(0), (0, 0)));
+    q.push(Reverse((0, 0, 0)));
 
     let mut visited = vec![vec![false; cols]; rows];
     let steps = [(-1, 0), (0, -1), (1, 0), (0, 1)];
-    while let Some((Reverse(t), (row, col))) = q.pop() {
+    while let Some(Reverse((time, row, col))) = q.pop() {
         if row == rows - 1 && col == cols - 1 {
-            return t;
+            return time;
         }
 
         visited[row][col] = true;
@@ -28,12 +29,12 @@ fn minimum_time(grid: Vec<Vec<i32>>) -> i32 {
                 && !visited[r as usize][c as usize]
             {
                 let (r, c) = (r as usize, c as usize);
-                let diff = grid[r][c] - t;
-                if diff > 1 {
-                    let diff = if diff % 2 == 0 { 1 } else { 0 };
-                    q.push((Reverse(grid[r][c] + diff), (r, c)))
-                } else {
-                    q.push((Reverse(t + 1), (r, c)));
+                let wait = if (grid[r][c] - time) % 2 == 0 { 1 } else { 0 };
+                let next_time = std::cmp::max(time + 1, grid[r][c] + wait);
+
+                if next_time < min_times[r][c] {
+                    q.push(Reverse((next_time, r, c)));
+                    min_times[r][c] = next_time;
                 }
             }
         }

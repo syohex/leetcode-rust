@@ -1,0 +1,6 @@
+[package]
+name = "minimum_time_to_visit_a_cell_in_a_grid"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

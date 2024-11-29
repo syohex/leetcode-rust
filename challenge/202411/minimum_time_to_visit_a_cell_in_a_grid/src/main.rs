@@ -11,14 +11,11 @@ fn minimum_time(grid: Vec<Vec<i32>>) -> i32 {
     let mut q = BinaryHeap::new();
     q.push(Reverse((0, 0, 0)));
 
-    let mut visited = vec![vec![false; cols]; rows];
     let steps = [(-1, 0), (0, -1), (1, 0), (0, 1)];
     while let Some(Reverse((time, row, col))) = q.pop() {
         if row == rows - 1 && col == cols - 1 {
             return time;
         }
-
-        visited[row][col] = true;
 
         for &(x, y) in &steps {
             let (r, c) = (row as i32 + x, col as i32 + y);
@@ -26,7 +23,6 @@ fn minimum_time(grid: Vec<Vec<i32>>) -> i32 {
                 && r < rows as i32
                 && c >= 0
                 && c < cols as i32
-                && !visited[r as usize][c as usize]
             {
                 let (r, c) = (r as usize, c as usize);
                 let wait = if (grid[r][c] - time) % 2 == 0 { 1 } else { 0 };

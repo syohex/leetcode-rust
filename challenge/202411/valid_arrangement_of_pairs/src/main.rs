@@ -1,62 +1,37 @@
 fn valid_arrangement(pairs: Vec<Vec<i32>>) -> Vec<Vec<i32>> {
     use std::collections::HashMap;
+    use std::collections::VecDeque;
 
-    fn f(
-        i: i32,
-        limit: usize,
-        graph: &HashMap<i32, Vec<(usize, i32, i32)>>,
-        used: &mut Vec<bool>,
-        acc: &mut Vec<Vec<i32>>,
-    ) -> bool {
-        if acc.len() == limit {
-            return true;
+    fn f(current: i32, graph: &mut HashMap<i32, VecDeque<i32>>, acc: &mut Vec<Vec<i32>>) {
+        while let Some(prev) = graph.get_mut(&current).unwrap().pop_front() {
+            f(prev, graph, acc);
+            acc.push(vec![prev, current]);
         }
-
-        if let Some(v) = graph.get(&i) {
-            for &(j, start, end) in v {
-                if !used[j] {
-                    used[j] = true;
-                    acc.push(vec![start, end]);
-                    if f(end, limit, graph, used, acc) {
-                        return true;
-                    }
-                    acc.pop();
-                    used[j] = false;
-                }
-            }
-        }
-
-        false
     }
 
     let mut graph = HashMap::new();
-    let mut ins = HashMap::new();
-    for (i, p) in pairs.iter().enumerate() {
-        graph.entry(p[0]).or_insert(vec![]).push((i, p[0], p[1]));
-        *ins.entry(p[1]).or_insert(0) += 1;
+    let mut in_outs = HashMap::new();
+    for p in &pairs {
+        graph.entry(p[1]).or_insert(VecDeque::new()).push_back(p[0]);
+        graph.entry(p[0]).or_insert(VecDeque::new());
+        *in_outs.entry(p[1]).or_insert(0) += 1;
+        *in_outs.entry(p[0]).or_insert(0) -= 1;
     }
 
-    let len = pairs.len();
-    let mut ret = vec![];
-    let mut used = vec![false; len];
     let mut start = -1;
-    for (i, p) in pairs.iter().enumerate() {
-        let in_ = *ins.get(&p[0]).unwrap_or(&0);
-        if in_ == 0 {
-            start = p[1];
-            ret.push(p.clone());
-            used[i] = true;
+    for (node, count) in &in_outs {
+        if *count == 1 {
+            start = *node;
             break;
         }
     }
     if start == -1 {
-        start = pairs[0][1];
-        ret.push(pairs[0].clone());
-        used[0] = true;
+        start = pairs[0][0];
     }
+    let mut acc = vec![];
+    f(start, &mut graph, &mut acc);
 
-    f(start, len, &graph, &mut used, &mut ret);
-    ret
+    acc
 }
 
 fn main() {
@@ -82,6 +57,32 @@ fn test() {
     {
         let pairs = vec![vec![1, 2], vec![1, 3], vec![2, 1]];
         let expected = vec![vec![1, 2], vec![2, 1], vec![1, 3]];
+        let ret = valid_arrangement(pairs);
+        assert_eq!(ret, expected);
+    }
+    {
+        let pairs = vec![
+            vec![8, 5],
+            vec![8, 7],
+            vec![0, 8],
+            vec![0, 5],
+            vec![7, 0],
+            vec![5, 0],
+            vec![0, 7],
+            vec![8, 0],
+            vec![7, 8],
+        ];
+        let expected = vec![
+            vec![8, 0],
+            vec![0, 5],
+            vec![5, 0],
+            vec![0, 7],
+            vec![7, 8],
+            vec![8, 7],
+            vec![7, 0],
+            vec![0, 8],
+            vec![8, 5],
+        ];
         let ret = valid_arrangement(pairs);
         assert_eq!(ret, expected);
     }

@@ -30,24 +30,33 @@ fn valid_arrangement(pairs: Vec<Vec<i32>>) -> Vec<Vec<i32>> {
     }
 
     let mut graph = HashMap::new();
+    let mut ins = HashMap::new();
     for (i, p) in pairs.iter().enumerate() {
         graph.entry(p[0]).or_insert(vec![]).push((i, p[0], p[1]));
+        *ins.entry(p[1]).or_insert(0) += 1;
     }
 
     let len = pairs.len();
-    let mut used = vec![false; len];
     let mut ret = vec![];
-    for (i, p) in pairs.into_iter().enumerate() {
-        used[i] = true;
-        ret.push(p.clone());
-        if f(p[1], len, &graph, &mut used, &mut ret) {
-            return ret;
+    let mut used = vec![false; len];
+    let mut start = -1;
+    for (i, p) in pairs.iter().enumerate() {
+        let in_ = *ins.get(&p[0]).unwrap_or(&0);
+        if in_ == 0 {
+            start = p[1];
+            ret.push(p.clone());
+            used[i] = true;
+            break;
         }
-        ret.pop();
-        used[i] = false;
+    }
+    if start == -1 {
+        start = pairs[0][1];
+        ret.push(pairs[0].clone());
+        used[0] = true;
     }
 
-    unreachable!("never reach here");
+    f(start, len, &graph, &mut used, &mut ret);
+    ret
 }
 
 fn main() {

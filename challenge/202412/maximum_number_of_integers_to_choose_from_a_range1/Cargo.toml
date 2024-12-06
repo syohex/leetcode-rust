@@ -1,0 +1,6 @@
+[package]
+name = "maximum_number_of_integers_to_choose_from_a_range1"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

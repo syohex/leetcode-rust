@@ -1,0 +1,6 @@
+[package]
+name = "find_longest_special_substring_that_occurs_thrice1"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

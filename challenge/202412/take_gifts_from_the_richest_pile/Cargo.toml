@@ -1,0 +1,6 @@
+[package]
+name = "take_gifts_from_the_richest_pile"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

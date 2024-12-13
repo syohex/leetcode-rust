@@ -1,33 +1,24 @@
 fn find_score(nums: Vec<i32>) -> i64 {
-    use std::cmp::Reverse;
-    use std::collections::{BinaryHeap, HashSet};
+    let mut v: Vec<_> = nums.into_iter().enumerate().map(|(i, n)| (n, i)).collect();
+    v.sort_unstable();
 
-    let mut q = BinaryHeap::new();
-    let len = nums.len();
-    for (i, n) in nums.into_iter().enumerate() {
-        q.push(Reverse((n, i)));
-    }
-
-    let mut checked = HashSet::new();
-    let mut ret = 0i64;
-    while checked.len() != len {
-        if let Some(Reverse((n, i))) = q.pop() {
-            if checked.contains(&i) {
-                continue;
+    let len = v.len();
+    v.into_iter()
+        .fold((0i64, vec![false; len]), |(acc, mut checked), (n, i)| {
+            if checked[i] {
+                (acc, checked)
+            } else {
+                checked[i] = true;
+                if i >= 1 {
+                    checked[i - 1] = true;
+                }
+                if i + 1 < checked.len() {
+                    checked[i + 1] = true;
+                }
+                (acc + n as i64, checked)
             }
-
-            ret += n as i64;
-            checked.insert(i);
-            if i >= 1 {
-                checked.insert(i - 1);
-            }
-            if i + 1 < len {
-                checked.insert(i + 1);
-            }
-        }
-    }
-
-    ret
+        })
+        .0
 }
 
 fn main() {

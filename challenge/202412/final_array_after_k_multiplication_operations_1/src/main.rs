@@ -1,19 +1,25 @@
 fn get_final_state(nums: Vec<i32>, k: i32, multiplier: i32) -> Vec<i32> {
-    let mut nums = nums;
-    for _ in 0..k {
-        let mut min = nums[0];
-        let mut min_index = 0;
-        for (i, &n) in nums.iter().enumerate().skip(1) {
-            if n < min {
-                min = n;
-                min_index = i;
-            }
-        }
+    use std::cmp::Reverse;
+    use std::collections::BinaryHeap;
 
-        nums[min_index] *= multiplier;
+    let len = nums.len();
+    let mut q = BinaryHeap::new();
+    for (i, n) in nums.into_iter().enumerate() {
+        q.push(Reverse((n, i)));
     }
 
-    nums
+    for _ in 0..k {
+        if let Some(Reverse((n, i))) = q.pop() {
+            q.push(Reverse((n * multiplier, i)));
+        }
+    }
+
+    let mut ret = vec![0;len];
+    while let Some(Reverse((n, i))) = q.pop() {
+        ret[i] = n;
+    }
+
+    ret
 }
 
 fn main() {

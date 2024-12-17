@@ -1,0 +1,6 @@
+[package]
+name = "construct_string_with_repeat_limit"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

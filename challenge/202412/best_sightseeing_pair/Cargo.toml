@@ -1,0 +1,6 @@
+[package]
+name = "best_sightseeing_pair"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

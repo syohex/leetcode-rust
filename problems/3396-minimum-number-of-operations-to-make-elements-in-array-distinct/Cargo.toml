@@ -1,0 +1,6 @@
+[package]
+name = "minimum-number-of-operations-to-make-elements-in-array-distinct"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

@@ -1,0 +1,6 @@
+[package]
+name = "count_ways_to_build_good_strings"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

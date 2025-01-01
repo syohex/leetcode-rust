@@ -1,30 +1,45 @@
 fn mincost_tickets(days: Vec<i32>, costs: Vec<i32>) -> i32 {
     use std::cmp::min;
-    let limit = *days.last().unwrap() as usize;
-    let mut dp = vec![0; limit + 1];
+    use std::collections::HashMap;
 
-    let mut j = 0;
-    for i in 1..=limit {
-        if (i as i32) < days[j] {
-            dp[i] = dp[i - 1];
-        } else {
-            j += 1;
-            let ret1 = dp[i - 1] + costs[0];
-            let ret7 = if i >= 7 {
-                dp[i - 7] + costs[1]
-            } else {
-                dp[0] + costs[1]
-            };
-            let ret30 = if i >= 30 {
-                dp[i - 30] + costs[2]
-            } else {
-                dp[0] + costs[2]
-            };
-            dp[i] = min(ret1, min(ret7, ret30));
+    fn f(pos: usize, days: &Vec<i32>, costs: &Vec<i32>, cache: &mut HashMap<usize, i32>) -> i32 {
+        if pos >= days.len() {
+            return 0;
         }
+
+        if let Some(v) = cache.get(&pos) {
+            return *v;
+        }
+
+        let ret1 = costs[0] + f(pos + 1, days, costs, cache);
+        let mut p = pos;
+        for i in pos..days.len() {
+            if days[i] - days[pos] < 7 {
+                p = i;
+            } else {
+                break;
+            }
+        }
+
+        let ret7 = costs[1] + f(p + 1, days, costs, cache);
+        let mut p = pos;
+        for i in pos..days.len() {
+            if days[i] - days[pos] < 30 {
+                p = i;
+            } else {
+                break;
+            }
+        }
+
+        let ret30 = costs[2] + f(p + 1, days, costs, cache);
+        println!("pos={pos}, ret1={ret1}, ret7={ret7}, ret30={ret30}");
+        let ret = min(ret1, min(ret7, ret30));
+        cache.insert(pos, ret);
+        ret
     }
 
-    dp[limit]
+    let mut cache = HashMap::new();
+    f(0, &days, &costs, &mut cache)
 }
 
 fn main() {

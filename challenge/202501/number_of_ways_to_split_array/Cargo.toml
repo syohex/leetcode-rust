@@ -1,0 +1,6 @@
+[package]
+name = "number_of_ways_to_split_array"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

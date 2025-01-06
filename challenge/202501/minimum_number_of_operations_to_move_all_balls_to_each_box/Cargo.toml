@@ -1,0 +1,6 @@
+[package]
+name = "minimum_number_of_operations_to_move_all_balls_to_each_box"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

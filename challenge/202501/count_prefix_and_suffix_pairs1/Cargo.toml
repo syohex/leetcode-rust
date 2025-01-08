@@ -1,0 +1,6 @@
+[package]
+name = "count_prefix_and_suffix_pairs1"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

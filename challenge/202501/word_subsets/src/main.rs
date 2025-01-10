@@ -17,14 +17,19 @@ fn word_subsets(words1: Vec<String>, words2: Vec<String>) -> Vec<String> {
         true
     }
 
+    let mut table2 = vec![0; 26];
+    for word2 in words2 {
+        let t = to_table(&word2);
+        for i in 0..26 {
+            table2[i] = std::cmp::max(table2[i], t[i]);
+        }
+    }
+
     words1
         .into_iter()
         .filter(|w1| {
             let t1 = to_table(w1);
-            words2.iter().all(|w2| {
-                let t2 = to_table(w2);
-                is_subset(&t1, &t2)
-            })
+            is_subset(&t1, &table2)
         })
         .collect()
 }

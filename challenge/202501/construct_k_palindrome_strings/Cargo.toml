@@ -1,0 +1,6 @@
+[package]
+name = "construct_k_palindrome_strings"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

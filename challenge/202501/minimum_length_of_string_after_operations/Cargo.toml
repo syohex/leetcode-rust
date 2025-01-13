@@ -1,0 +1,6 @@
+[package]
+name = "minimum_length_of_string_after_operations"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

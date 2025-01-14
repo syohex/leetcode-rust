@@ -1,15 +1,20 @@
 fn find_the_prefix_common_array(a: Vec<i32>, b: Vec<i32>) -> Vec<i32> {
-    use std::collections::HashSet;
-
-    let mut sa = HashSet::new();
-    let mut sb = HashSet::new();
-
+    let mut freq = vec![0; a.len()];
     let mut ret = vec![];
+    let mut commons = 0;
     for (m, n) in a.into_iter().zip(b.into_iter()) {
-        sa.insert(m);
-        sb.insert(n);
+        let (m, n) = (m as usize, n as usize);
+        freq[m - 1] += 1;
+        if freq[m - 1] == 2 {
+            commons += 1;
+        }
 
-        ret.push(sa.intersection(&sb).count() as i32)
+        freq[n - 1] += 1;
+        if freq[n - 1] == 2 {
+            commons += 1;
+        }
+
+        ret.push(commons);
     }
 
     ret

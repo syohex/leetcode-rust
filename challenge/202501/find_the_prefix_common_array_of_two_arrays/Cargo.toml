@@ -1,0 +1,6 @@
+[package]
+name = "find_the_prefix_common_array_of_two_arrays"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

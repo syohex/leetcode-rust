@@ -1,0 +1,6 @@
+[package]
+name = "first_completely_painted_row_or_column"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

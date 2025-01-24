@@ -1,29 +1,40 @@
 fn eventual_safe_nodes(graph: Vec<Vec<i32>>) -> Vec<i32> {
-    fn f(i: usize, graph: &Vec<Vec<i32>>, visited: &mut Vec<bool>) -> bool {
-        if graph[i].is_empty() {
+    fn f(
+        i: usize,
+        graph: &Vec<Vec<i32>>,
+        checked: &mut Vec<bool>,
+        in_path: &mut Vec<bool>,
+    ) -> bool {
+        if in_path[i] {
             return true;
         }
-        if visited[i] {
+        if checked[i] {
             return false;
         }
 
-        visited[i] = true;
+        checked[i] = true;
+        in_path[i] = true;
         for &next in &graph[i] {
             let next = next as usize;
-            if !f(next, graph, visited) {
-                return false;
+            if f(next, graph, checked, in_path) {
+                return true;
             }
         }
-        visited[i] = false;
+        in_path[i] = false;
 
-        return true;
+        false
     }
 
     let n = graph.len();
-    let mut ret = vec![];
-    let mut visited = vec![false; n];
+    let mut in_path = vec![false; n];
+    let mut checked = vec![false; n];
     for i in 0..n {
-        if f(i, &graph, &mut visited) {
+        f(i, &graph, &mut checked, &mut in_path);
+    }
+
+    let mut ret = vec![];
+    for i in 0..n {
+        if !in_path[i] {
             ret.push(i as i32);
         }
     }

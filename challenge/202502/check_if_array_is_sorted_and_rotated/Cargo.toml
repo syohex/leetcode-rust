@@ -1,0 +1,6 @@
+[package]
+name = "check_if_array_is_sorted_and_rotated"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

@@ -1,0 +1,6 @@
+[package]
+name = "maximum_ascending_subarray_sum"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

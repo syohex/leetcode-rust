@@ -1,0 +1,6 @@
+[package]
+name = "check_if_one_string_swap_can_make_strings_equal"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

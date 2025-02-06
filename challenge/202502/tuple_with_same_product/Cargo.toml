@@ -1,0 +1,6 @@
+[package]
+name = "tuple_with_same_product"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

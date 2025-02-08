@@ -1,8 +1,9 @@
-use std::collections::{HashMap, HashSet};
+use std::cmp::Reverse;
+use std::collections::{BinaryHeap, HashMap};
 
 struct NumberContainers {
     nums: HashMap<i32, i32>,
-    index: HashMap<i32, HashSet<i32>>,
+    index: HashMap<i32, BinaryHeap<Reverse<i32>>>,
 }
 
 impl NumberContainers {
@@ -14,31 +15,23 @@ impl NumberContainers {
     }
 
     fn change(&mut self, index: i32, number: i32) {
-        let old_number = if let Some(v) = self.nums.get(&index) {
-            *v
-        } else {
-            0
-        };
-
         self.nums.insert(index, number);
-        if old_number != 0 {
-            if let Some(v) = self.index.get_mut(&old_number) {
-                v.remove(&index);
-            }
-        }
-
-        self.index
-            .entry(number)
-            .or_default()
-            .insert(index);
+        self.index.entry(number).or_default().push(Reverse(index));
     }
 
-    fn find(&self, number: i32) -> i32 {
-        if let Some(v) = self.index.get(&number) {
-            if let Some(m) = v.iter().min() {
-                *m
-            } else {
-                -1
+    fn find(&mut self, number: i32) -> i32 {
+        if let Some(q) = self.index.get_mut(&number) {
+            loop {
+                if let Some(Reverse(n)) = q.peek() {
+                    let v = *self.nums.get(n).unwrap();
+                    if v == number {
+                        return *n;
+                    }
+
+                    q.pop();
+                } else {
+                    return -1;
+                }
             }
         } else {
             -1

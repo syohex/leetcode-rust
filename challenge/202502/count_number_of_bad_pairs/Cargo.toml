@@ -1,0 +1,6 @@
+[package]
+name = "count_number_of_bad_pairs"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

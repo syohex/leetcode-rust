@@ -1,0 +1,6 @@
+[package]
+name = "product_of_the_last_k_numbers"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

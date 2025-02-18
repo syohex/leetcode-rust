@@ -1,0 +1,6 @@
+[package]
+name = "construct_smallest_number_from_di_string"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

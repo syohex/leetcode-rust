@@ -1,18 +1,18 @@
 fn num_of_subarrays(arr: Vec<i32>) -> i32 {
     let modulo = 1_000_000_007;
 
-    let mut acc = vec![0; arr.len() + 1];
-    for (i, a) in arr.into_iter().enumerate() {
-        acc[i + 1] = acc[i] + a;
-    }
-
     let mut ret = 0;
-    for i in 1..acc.len() {
-        for j in 0..i {
-            let diff = acc[i] - acc[j];
-            if diff % 2 != 0 {
-                ret = (ret + 1) % modulo;
-            }
+    let mut odds = 0;
+    let mut evens = 1;
+    let mut acc = 0;
+    for a in arr {
+        acc += a;
+        if acc % 2 == 0 {
+            ret = (ret + odds) % modulo;
+            evens += 1;
+        } else {
+            ret = (ret + evens) % modulo;
+            odds += 1;
         }
     }
 

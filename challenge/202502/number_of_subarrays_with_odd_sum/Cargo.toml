@@ -1,0 +1,6 @@
+[package]
+name = "number_of_subarrays_with_odd_sum"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

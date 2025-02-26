@@ -1,0 +1,6 @@
+[package]
+name = "maximum_absolute_sum_of_any_subarray"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

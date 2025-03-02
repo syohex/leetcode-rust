@@ -1,0 +1,6 @@
+[package]
+name = "merge_two_2d_arrays_by_summing_values"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

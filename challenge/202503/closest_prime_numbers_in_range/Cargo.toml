@@ -1,0 +1,6 @@
+[package]
+name = "closest_prime_numbers_in_range"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

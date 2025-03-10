@@ -1,56 +1,42 @@
 fn count_of_substrings(word: String, k: i32) -> i64 {
-    use std::collections::HashMap;
+    fn f(cs: &[char], k: i32) -> i64 {
+        use std::collections::HashMap;
 
-    let mut h = HashMap::new();
-    for c in ['a','e','i','o','u'] {
-        h.insert(c, 0);
+        let mut h = HashMap::new();
+        for c in ['a', 'e', 'i', 'o', 'u'] {
+            h.insert(c, 0);
+        }
+
+        let len = cs.len();
+        let mut left = 0;
+        let mut right = 0;
+
+        let mut ret = 0i64;
+        let mut consonants = 0;
+        while right < len {
+            if let Some(v) = h.get_mut(&cs[right]) {
+                *v += 1;
+            } else {
+                consonants += 1;
+            }
+
+            while consonants >= k && h.values().all(|&v| v >= 1) {
+                ret += (len - right) as i64;
+                if let Some(v) = h.get_mut(&cs[left]) {
+                    *v -= 1;
+                } else {
+                    consonants -= 1;
+                }
+                left += 1;
+            }
+
+            right += 1;
+        }
+        ret
     }
 
     let cs: Vec<_> = word.chars().collect();
-    let len = cs.len();
-    let mut left = 0;
-    let mut right = 0;
-
-    let mut ret = 0i64;
-    let mut consonants = 0;
-    while right < len {
-        if let Some(v) = h.get_mut(&cs[right]) {
-            *v += 1;
-        } else {
-            consonants += 1;
-        }
-
-        while left <= right && consonants > k {
-            if let Some(v) = h.get_mut(&cs[left]) {
-                *v -= 1;
-            } else {
-                consonants -= 1;
-            }
-            left += 1;
-        }
-
-        let orig = left;
-        let tmp = h.clone();
-        while consonants == k && h.values().all(|&v| v >= 1) {
-            ret += 1;
-
-            if let Some(v) = h.get_mut(&cs[left]) {
-                if *v >= 2 {
-                    *v -= 1;
-                    left += 1;
-                } else {
-                    break;
-                }
-            } else {
-                break;
-            }
-        }
-
-        left = orig;
-        h = tmp;
-        right += 1;
-    }
-    ret
+    f(&cs, k) - f(&cs, k + 1)
 }
 
 fn main() {

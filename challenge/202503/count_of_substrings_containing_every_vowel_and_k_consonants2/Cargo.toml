@@ -1,0 +1,6 @@
+[package]
+name = "count_of_substrings_containing_every_vowel_and_k_consonants2"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

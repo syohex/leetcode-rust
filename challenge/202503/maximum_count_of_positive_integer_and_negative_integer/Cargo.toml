@@ -1,0 +1,6 @@
+[package]
+name = "maximum_count_of_positive_integer_and_negative_integer"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

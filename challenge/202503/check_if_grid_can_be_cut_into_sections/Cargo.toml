@@ -1,0 +1,6 @@
+[package]
+name = "check_if_grid_can_be_cut_into_sections"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

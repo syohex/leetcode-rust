@@ -1,0 +1,6 @@
+[package]
+name = "minimum_index_of_a_valid_split"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

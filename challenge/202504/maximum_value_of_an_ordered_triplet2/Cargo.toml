@@ -1,0 +1,6 @@
+[package]
+name = "maximum_value_of_an_ordered_triplet2"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

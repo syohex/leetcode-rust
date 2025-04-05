@@ -1,0 +1,6 @@
+[package]
+name = "sum_of_all_subset_xor_totals"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

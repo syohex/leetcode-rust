@@ -1,16 +1,17 @@
 fn count_symmetric_integers(low: i32, high: i32) -> i32 {
-    (low..=high).fold(0, |acc, n| {
-        let ns: Vec<_> = n.to_string().bytes().map(|b| (b - b'0') as i32).collect();
-        let len = ns.len();
-        if len % 2 != 0 {
-            acc
-        } else {
-            let half = len / 2;
-            let sum1: i32 = ns.iter().take(half).sum();
-            let sum2: i32 = ns.iter().skip(half).sum();
-            acc + (if sum1 == sum2 { 1 } else { 0 })
-        }
-    })
+    (low..=high)
+        .filter(|&n| {
+            if n >= 1000 {
+                let part1 = n / 1000 + (n % 1000) / 100;
+                let part2 = (n % 100) / 10 + n % 10;
+                part1 == part2
+            } else if n >= 100 {
+                false
+            } else {
+                n % 11 == 0
+            }
+        })
+        .count() as i32
 }
 
 fn main() {

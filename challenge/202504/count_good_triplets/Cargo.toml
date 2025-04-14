@@ -1,0 +1,6 @@
+[package]
+name = "count_good_triplets"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

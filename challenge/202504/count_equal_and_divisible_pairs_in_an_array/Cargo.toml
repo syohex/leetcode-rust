@@ -1,0 +1,6 @@
+[package]
+name = "count_equal_and_divisible_pairs_in_an_array"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

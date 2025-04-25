@@ -1,0 +1,6 @@
+[package]
+name = "count_of_interesting_subarrays"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

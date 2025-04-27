@@ -1,0 +1,6 @@
+[package]
+name = "count_subarrays_of_length_three_with_a_condition"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

@@ -1,0 +1,6 @@
+[package]
+name = "build_array_from_permutation"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

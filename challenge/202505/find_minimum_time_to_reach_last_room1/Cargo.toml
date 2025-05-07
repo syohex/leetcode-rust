@@ -1,0 +1,6 @@
+[package]
+name = "find_minimum_time_to_reach_last_room1"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

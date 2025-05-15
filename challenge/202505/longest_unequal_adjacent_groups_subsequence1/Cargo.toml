@@ -1,0 +1,6 @@
+[package]
+name = "longest_unequal_adjacent_groups_subsequence1"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

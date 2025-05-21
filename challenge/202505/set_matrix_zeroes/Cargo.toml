@@ -1,0 +1,6 @@
+[package]
+name = "set_matrix_zeroes"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

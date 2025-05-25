@@ -1,0 +1,6 @@
+[package]
+name = "longest_palindrome_by_concatenating_two_letter_words"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

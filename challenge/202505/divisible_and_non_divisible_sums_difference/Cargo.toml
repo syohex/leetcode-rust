@@ -1,0 +1,6 @@
+[package]
+name = "divisible_and_non_divisible_sums_difference"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

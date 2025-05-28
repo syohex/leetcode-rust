@@ -1,0 +1,6 @@
+[package]
+name = "maximize_the_number_of_target_nodes_after_connecting_trees1"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

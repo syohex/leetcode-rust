@@ -1,0 +1,6 @@
+[package]
+name = "lexicographically_minimum_string_after_removing_stars"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

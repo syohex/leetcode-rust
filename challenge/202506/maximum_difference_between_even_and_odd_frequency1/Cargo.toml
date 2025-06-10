@@ -1,0 +1,6 @@
+[package]
+name = "maximum_difference_between_even_and_odd_frequency1"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

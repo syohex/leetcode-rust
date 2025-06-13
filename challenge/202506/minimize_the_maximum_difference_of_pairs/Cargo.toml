@@ -1,0 +1,6 @@
+[package]
+name = "minimize_the_maximum_difference_of_pairs"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

@@ -1,0 +1,6 @@
+[package]
+name = "max_difference_you_can_get_from_changing_an_integer"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

@@ -1,0 +1,6 @@
+[package]
+name = "partition_array_such_that_maximum_differences_is_k"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

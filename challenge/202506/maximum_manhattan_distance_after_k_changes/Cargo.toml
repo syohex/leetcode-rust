@@ -1,0 +1,6 @@
+[package]
+name = "maximum_manhattan_distance_after_k_changes"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

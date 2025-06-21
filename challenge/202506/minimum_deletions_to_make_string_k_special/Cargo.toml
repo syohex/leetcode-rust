@@ -1,0 +1,6 @@
+[package]
+name = "minimum_deletions_to_make_string_k_special"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

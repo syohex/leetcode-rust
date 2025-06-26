@@ -1,0 +1,6 @@
+[package]
+name = "longest_binary_subsequence_less_than_or_equal_to_k"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

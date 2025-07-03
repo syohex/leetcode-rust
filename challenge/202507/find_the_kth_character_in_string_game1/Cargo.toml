@@ -1,0 +1,6 @@
+[package]
+name = "find_the_kth_character_in_string_game1"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

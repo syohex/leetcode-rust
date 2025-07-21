@@ -1,0 +1,6 @@
+[package]
+name = "delete_characters_to_make_fancy_string"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

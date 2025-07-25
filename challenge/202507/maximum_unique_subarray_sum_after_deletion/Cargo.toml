@@ -1,0 +1,6 @@
+[package]
+name = "maximum_unique_subarray_sum_after_deletion"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

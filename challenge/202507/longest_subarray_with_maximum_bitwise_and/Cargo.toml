@@ -1,0 +1,6 @@
+[package]
+name = "longest_subarray_with_maximum_bitwise_and"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

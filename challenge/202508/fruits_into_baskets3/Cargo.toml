@@ -1,0 +1,6 @@
+[package]
+name = "fruits_into_baskets3"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

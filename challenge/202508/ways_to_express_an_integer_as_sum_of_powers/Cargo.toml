@@ -1,0 +1,6 @@
+[package]
+name = "ways_to_express_an_integer_as_sum_of_powers"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

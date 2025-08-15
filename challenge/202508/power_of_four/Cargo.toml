@@ -1,0 +1,6 @@
+[package]
+name = "power_of_four"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

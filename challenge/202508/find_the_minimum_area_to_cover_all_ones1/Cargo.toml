@@ -1,0 +1,6 @@
+[package]
+name = "find_the_minimum_area_to_cover_all_ones1"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

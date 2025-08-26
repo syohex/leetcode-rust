@@ -1,0 +1,6 @@
+[package]
+name = "maximum_area_of_longest_diagnonal_rectangle"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

@@ -1,0 +1,6 @@
+[package]
+name = "alice_and_bob_playing_flower_game"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

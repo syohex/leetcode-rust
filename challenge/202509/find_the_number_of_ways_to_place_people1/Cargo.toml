@@ -1,0 +1,6 @@
+[package]
+name = "find_the_number_of_ways_to_place_people1"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

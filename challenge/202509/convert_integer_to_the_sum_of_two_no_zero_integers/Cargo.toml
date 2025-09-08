@@ -1,0 +1,6 @@
+[package]
+name = "convert_integer_to_the_sum_of_two_no_zero_integers"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

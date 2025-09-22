@@ -1,0 +1,6 @@
+[package]
+name = "count_elements_with_maximum_frequency"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

@@ -1,0 +1,6 @@
+[package]
+name = "fraction_to_recurring_decimal"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

@@ -1,0 +1,6 @@
+[package]
+name = "find_resultant_array_after_removing_anagrams"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

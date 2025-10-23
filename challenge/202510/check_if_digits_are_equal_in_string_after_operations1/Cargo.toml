@@ -1,0 +1,6 @@
+[package]
+name = "check_if_digits_are_equal_in_string_after_operations1"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

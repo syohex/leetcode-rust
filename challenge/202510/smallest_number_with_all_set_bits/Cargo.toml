@@ -1,0 +1,6 @@
+[package]
+name = "smallest_number_with_all_set_bits"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

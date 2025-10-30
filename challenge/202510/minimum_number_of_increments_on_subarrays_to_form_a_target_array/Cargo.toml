@@ -1,0 +1,6 @@
+[package]
+name = "minimum_number_of_increments_on_subarrays_to_form_a_target_array"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

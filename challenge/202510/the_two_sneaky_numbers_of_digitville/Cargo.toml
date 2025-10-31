@@ -1,0 +1,6 @@
+[package]
+name = "the_two_sneaky_numbers_of_digitville"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

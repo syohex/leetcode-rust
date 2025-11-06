@@ -1,0 +1,6 @@
+[package]
+name = "power_grid_maintenance"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

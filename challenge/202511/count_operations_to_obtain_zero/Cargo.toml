@@ -1,0 +1,6 @@
+[package]
+name = "count_operations_to_obtain_zero"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

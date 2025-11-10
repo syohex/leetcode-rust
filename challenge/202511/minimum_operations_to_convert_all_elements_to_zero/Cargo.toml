@@ -1,0 +1,6 @@
+[package]
+name = "minimum_operations_to_convert_all_elements_to_zero"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

@@ -1,0 +1,6 @@
+[package]
+name = "one_and_zeros"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

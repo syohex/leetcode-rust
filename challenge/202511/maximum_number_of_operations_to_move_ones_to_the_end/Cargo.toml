@@ -1,0 +1,6 @@
+[package]
+name = "maximum_number_of_operations_to_move_ones_to_the_end"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

@@ -1,0 +1,6 @@
+[package]
+name = "check_if_all_1s_are_at_least_lenght_k_places_away"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

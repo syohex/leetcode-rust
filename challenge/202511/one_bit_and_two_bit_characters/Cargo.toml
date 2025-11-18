@@ -1,0 +1,6 @@
+[package]
+name = "one_bit_and_two_bit_characters"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

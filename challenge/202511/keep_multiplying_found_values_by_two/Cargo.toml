@@ -1,0 +1,6 @@
+[package]
+name = "keep_multiplying_found_values_by_two"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

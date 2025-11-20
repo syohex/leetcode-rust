@@ -1,0 +1,6 @@
+[package]
+name = "set_intersection_size_at_least_two"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

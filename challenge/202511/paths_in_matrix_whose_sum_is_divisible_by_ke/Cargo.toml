@@ -1,0 +1,6 @@
+[package]
+name = "paths_in_matrix_whose_sum_is_divisible_by_ke"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

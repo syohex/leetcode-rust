@@ -1,20 +1,15 @@
 fn max_subarray_sum(nums: Vec<i32>, k: i32) -> i64 {
-    let len = nums.len();
-    let mut prefixes = vec![0i64];
+    let mut min_sums = vec![i64::MAX / 2; k as usize];
     let mut sum = 0i64;
-    for num in nums {
-        sum += num as i64;
-        prefixes.push(sum);
-    }
-
-    let k = k as i64;
     let mut ret = i64::MIN;
-    for i in 1..=len {
-        let mut j = i as i64 - k;
-        while j >= 0 {
-            ret = std::cmp::max(ret, prefixes[i] - prefixes[j as usize]);
-            j -= k;
-        }
+
+    min_sums[k as usize - 1] = 0;
+    for (i, num) in nums.into_iter().enumerate() {
+        sum += num as i64;
+
+        let m = i % k as usize;
+        ret = std::cmp::max(ret, sum - min_sums[m]);
+        min_sums[m] = std::cmp::min(sum, min_sums[m]);
     }
 
     ret

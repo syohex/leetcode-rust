@@ -1,0 +1,6 @@
+[package]
+name = "maximum_number_of_k_divisible_components"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

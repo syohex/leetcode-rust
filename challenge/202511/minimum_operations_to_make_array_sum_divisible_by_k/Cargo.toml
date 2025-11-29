@@ -1,0 +1,6 @@
+[package]
+name = "minimum_operations_to_make_array_sum_divisible_by_k"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

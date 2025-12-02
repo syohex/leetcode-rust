@@ -1,0 +1,6 @@
+[package]
+name = "count_number_of_trapezoids1"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

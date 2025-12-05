@@ -1,0 +1,6 @@
+[package]
+name = "count_partitions_with_even_sum_difference"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

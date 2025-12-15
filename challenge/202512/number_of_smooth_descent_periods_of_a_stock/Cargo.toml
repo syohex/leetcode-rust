@@ -1,0 +1,6 @@
+[package]
+name = "number_of_smooth_descent_periods_of_a_stock"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

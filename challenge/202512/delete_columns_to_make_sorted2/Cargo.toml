@@ -1,0 +1,6 @@
+[package]
+name = "delete_columns_to_make_sorted2"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

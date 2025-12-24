@@ -1,0 +1,6 @@
+[package]
+name = "apple_redistribution_into_boxes"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

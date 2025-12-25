@@ -1,0 +1,6 @@
+[package]
+name = "maxmize_happiness_of_selected_children"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

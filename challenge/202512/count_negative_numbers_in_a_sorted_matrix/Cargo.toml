@@ -1,0 +1,6 @@
+[package]
+name = "count_negative_numbers_in_a_sorted_matrix"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

@@ -1,0 +1,6 @@
+[package]
+name = "minimum_ascii_delete_sum_for_two_strings"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

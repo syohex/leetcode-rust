@@ -1,0 +1,6 @@
+[package]
+name = "minimum_time_visiting_all_points"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

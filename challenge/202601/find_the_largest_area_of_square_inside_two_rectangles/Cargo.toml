@@ -1,0 +1,6 @@
+[package]
+name = "find_the_largest_area_of_square_inside_two_rectangles"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

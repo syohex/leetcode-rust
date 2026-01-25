@@ -1,0 +1,6 @@
+[package]
+name = "minimum_difference_between_highest_and_lowest_of_k_scores"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

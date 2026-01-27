@@ -1,0 +1,6 @@
+[package]
+name = "minimum_cost_path_with_edge_reversals"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

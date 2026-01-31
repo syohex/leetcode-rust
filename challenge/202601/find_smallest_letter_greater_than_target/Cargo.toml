@@ -1,0 +1,6 @@
+[package]
+name = "find_smallest_letter_greater_than_target"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

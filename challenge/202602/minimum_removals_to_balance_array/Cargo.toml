@@ -1,0 +1,6 @@
+[package]
+name = "minimum_removals_to_balance_array"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

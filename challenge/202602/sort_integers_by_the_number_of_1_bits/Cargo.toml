@@ -1,0 +1,6 @@
+[package]
+name = "sort_integers_by_the_number_of_1_bits"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

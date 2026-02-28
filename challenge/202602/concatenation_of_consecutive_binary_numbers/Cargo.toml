@@ -1,0 +1,6 @@
+[package]
+name = "concatenation_of_consecutive_binary_numbers"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

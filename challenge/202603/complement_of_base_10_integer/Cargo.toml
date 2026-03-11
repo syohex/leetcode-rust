@@ -1,0 +1,6 @@
+[package]
+name = "complement_of_base_10_integer"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

@@ -1,0 +1,6 @@
+[package]
+name = "the-kth-lexicographical-string-of-all-happy-strings-of-length-n"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

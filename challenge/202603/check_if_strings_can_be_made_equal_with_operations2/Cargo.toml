@@ -1,0 +1,6 @@
+[package]
+name = "check_if_strings_can_be_made_equal_with_operations2"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

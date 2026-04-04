@@ -1,0 +1,6 @@
+[package]
+name = "decode_the_slanted_cipher_text"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

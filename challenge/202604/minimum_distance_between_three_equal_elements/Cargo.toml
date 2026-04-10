@@ -1,0 +1,6 @@
+[package]
+name = "minimum_distance_between_three_equal_elements"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

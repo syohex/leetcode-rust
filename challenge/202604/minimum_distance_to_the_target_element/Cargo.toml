@@ -1,0 +1,6 @@
+[package]
+name = "minimum_distance_to_the_target_element"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

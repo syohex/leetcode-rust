@@ -1,0 +1,6 @@
+[package]
+name = "shortest_distance_to_target_string_in_a_circular_array"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

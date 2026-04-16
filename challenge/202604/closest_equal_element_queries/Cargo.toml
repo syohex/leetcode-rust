@@ -1,0 +1,6 @@
+[package]
+name = "closest_equal_element_queries"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

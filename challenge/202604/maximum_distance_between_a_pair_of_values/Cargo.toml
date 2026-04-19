@@ -1,0 +1,6 @@
+[package]
+name = "maximum_distance_between_a_pair_of_values"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

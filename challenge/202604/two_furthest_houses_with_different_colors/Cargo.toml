@@ -1,0 +1,6 @@
+[package]
+name = "two_furthest_houses_with_different_colors"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

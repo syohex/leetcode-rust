@@ -2,8 +2,7 @@ fn contains_cycle(grid: Vec<Vec<char>>) -> bool {
     fn f(
         row: i32,
         col: i32,
-        init: (i32, i32),
-        len: usize,
+        parent: (i32, i32),
         grid: &Vec<Vec<char>>,
         visited: &mut Vec<Vec<bool>>,
     ) -> bool {
@@ -15,16 +14,12 @@ fn contains_cycle(grid: Vec<Vec<char>>) -> bool {
 
         for (x, y) in steps {
             let (r, c) = (row + x, col + y);
-            if r >= 0 && r < rows && c >= 0 && c < cols {
-                if ch != grid[r as usize][c as usize] {
-                    continue;
-                }
-
-                if len >= 4 && r == init.0 && c == init.1 {
-                    return true;
-                }
-
-                if !visited[r as usize][c as usize] && f(r, c, init, len + 1, grid, visited) {
+            if r >= 0 && r < rows && c >= 0 && c < cols && ch == grid[r as usize][c as usize] {
+                if !visited[r as usize][c as usize] {
+                    if f(r, c, (row, col), grid, visited) {
+                        return true;
+                    }
+                } else if (r, c) != parent {
                     return true;
                 }
             }
@@ -34,11 +29,11 @@ fn contains_cycle(grid: Vec<Vec<char>>) -> bool {
     }
 
     let (rows, cols) = (grid.len(), grid[0].len());
+    let mut visited = vec![vec![false; cols]; rows];
     for i in 0..rows {
         for j in 0..cols {
-            let mut visited = vec![vec![false; cols]; rows];
             let (row, col) = (i as i32, j as i32);
-            if f(row, col, (row, col), 1, &grid, &mut visited) {
+            if !visited[i][j] && f(row, col, (-1, -1), &grid, &mut visited) {
                 return true;
             }
         }

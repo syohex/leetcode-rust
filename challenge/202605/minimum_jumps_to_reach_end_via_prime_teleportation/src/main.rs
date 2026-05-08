@@ -1,21 +1,13 @@
 fn min_jumps(nums: Vec<i32>) -> i32 {
     use std::collections::VecDeque;
 
-    fn is_prime(n: i32) -> bool {
-        match n {
-            _ if n <= 1 => false,
-            2 => true,
-            n => {
-                let mut i = 3;
-                while i * i <= n {
-                    if n % i == 0 {
-                        return false;
-                    }
-                    i += 2;
-                }
-
-                n % 2 != 0
-            }
+    let max_num = 1_000_000;
+    let mut factors = vec![true; max_num + 1];
+    factors[0] = false;
+    factors[1] = false;
+    for i in 2..=max_num {
+        for j in (i..=max_num).step_by(i).skip(1) {
+            factors[j] = false;
         }
     }
 
@@ -28,7 +20,7 @@ fn min_jumps(nums: Vec<i32>) -> i32 {
         if i + 1 < len {
             graph[i].push(i + 1);
         }
-        if is_prime(*n) {
+        if factors[*n as usize] {
             for (j, m) in nums.iter().enumerate() {
                 if i != j && *m % *n == 0 {
                     graph[i].push(j);
@@ -71,6 +63,11 @@ fn main() {
 
 #[test]
 fn test() {
+    {
+        let nums = vec![25, 5, 7, 3, 25];
+        let ret = min_jumps(nums);
+        assert_eq!(ret, 2);
+    }
     {
         let nums = vec![1, 2, 4, 6];
         let ret = min_jumps(nums);

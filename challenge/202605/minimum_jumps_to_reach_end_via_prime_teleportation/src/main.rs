@@ -1,52 +1,54 @@
 fn min_jumps(nums: Vec<i32>) -> i32 {
-    use std::collections::VecDeque;
+    use std::collections::{VecDeque, HashMap};
 
-    let max_num = 1_000_000;
-    let mut factors = vec![true; max_num + 1];
-    factors[0] = false;
-    factors[1] = false;
+    let max_num = *nums.iter().max().unwrap() as usize;
+    let mut prime_factors = vec![vec![]; max_num + 1];
     for i in 2..=max_num {
-        for j in (i..=max_num).step_by(i).skip(1) {
-            factors[j] = false;
-        }
-    }
-
-    let len = nums.len();
-    let mut graph = vec![vec![]; len];
-    for (i, n) in nums.iter().enumerate() {
-        if i >= 1 {
-            graph[i].push(i - 1);
-        }
-        if i + 1 < len {
-            graph[i].push(i + 1);
-        }
-        if factors[*n as usize] {
-            for (j, m) in nums.iter().enumerate() {
-                if i != j && *m % *n == 0 {
-                    graph[i].push(j);
-                }
+        if prime_factors[i].is_empty() {
+            for j in (i..=max_num).step_by(i) {
+                prime_factors[j].push(i as i32)
             }
         }
     }
 
+    let mut graph: HashMap<i32, Vec<usize>> = HashMap::new();
+    for (i, n) in nums.iter().enumerate() {
+        if prime_factors[*n as usize].len() == 1 {
+            graph.entry(*n).or_default().push(i);
+        }
+    }
+
+    let len = nums.len();
     let mut q = VecDeque::new();
-    q.push_back(0);
+    q.push_back(len - 1);
 
     let mut ret = 0;
     let mut visited = vec![false; len];
     loop {
         let q_len = q.len();
         for _ in 0..q_len {
-            let next = q.pop_front().unwrap();
-            if next == len - 1 {
+            let node = q.pop_front().unwrap();
+            if node == 0 {
                 return ret;
             }
 
-            visited[next] = true;
+            if node >= 1 && !visited[node - 1]{
+                visited[node - 1] = true;
+                q.push_back(node - 1);
+            }
+            if node + 1 < len && !visited[node + 1] {
+                visited[node + 1] = true;
+                q.push_back(node + 1);
+            }
 
-            for n in &graph[next] {
-                if !visited[*n] {
-                    q.push_back(*n);
+            for &factor in &prime_factors[nums[node] as usize] {
+                if let Some(nexts) = graph.remove(&factor) {
+                    for next in nexts {
+                        if !visited[next] {
+                            visited[next] = true;
+                            q.push_back(next);
+                        }
+                    }
                 }
             }
         }

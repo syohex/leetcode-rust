@@ -1,0 +1,6 @@
+[package]
+name = "minimum_jumps_to_reach_end_via_prime_teleportation"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

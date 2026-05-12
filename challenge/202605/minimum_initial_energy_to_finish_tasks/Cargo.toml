@@ -1,0 +1,6 @@
+[package]
+name = "minimum_initial_energy_to_finish_tasks"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

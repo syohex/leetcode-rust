@@ -15,6 +15,7 @@ fn min_jumps(arr: Vec<i32>) -> i32 {
     q.push_back(0);
 
     let mut steps = 0;
+    let mut visited = vec![false; len];
     while !q.is_empty() {
         let q_len = q.len();
         for _ in 0..q_len {
@@ -25,14 +26,19 @@ fn min_jumps(arr: Vec<i32>) -> i32 {
 
             if let Some(nexts) = graph.remove(&arr[node]) {
                 for next in nexts {
-                    q.push_back(next);
+                    if !visited[next] {
+                        visited[next] = true;
+                        q.push_back(next);
+                    }
                 }
             }
 
-            if node >= 1 {
+            if node >= 1 && !visited[node - 1] {
+                visited[node - 1] = true;
                 q.push_back(node - 1);
             }
-            if node + 1 < len {
+            if node + 1 < len && !visited[node + 1] {
+                visited[node + 1] = true;
                 q.push_back(node + 1);
             }
         }

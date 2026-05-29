@@ -1,0 +1,6 @@
+[package]
+name = "minimum_element_after_replacement_with_digit_sum"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

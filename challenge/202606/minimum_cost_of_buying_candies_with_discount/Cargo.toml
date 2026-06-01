@@ -1,0 +1,6 @@
+[package]
+name = "minimum_cost_of_buying_candies_with_discount"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

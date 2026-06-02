@@ -1,0 +1,6 @@
+[package]
+name = "earlist_finish_time_for_land_and_water_rides1"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

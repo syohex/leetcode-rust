@@ -1,0 +1,6 @@
+[package]
+name = "total_waviness_of_numbers_in_range1"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

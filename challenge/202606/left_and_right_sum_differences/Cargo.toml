@@ -1,0 +1,6 @@
+[package]
+name = "left_and_right_sum_differences"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

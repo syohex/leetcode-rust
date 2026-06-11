@@ -1,0 +1,6 @@
+[package]
+name = "number_of_ways_to_assign_edge_weights1"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

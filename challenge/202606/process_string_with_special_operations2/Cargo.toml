@@ -1,0 +1,6 @@
+[package]
+name = "process_string_with_special_operations2"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

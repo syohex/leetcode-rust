@@ -1,0 +1,6 @@
+[package]
+name = "angle_between_hands_of_a_clock"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

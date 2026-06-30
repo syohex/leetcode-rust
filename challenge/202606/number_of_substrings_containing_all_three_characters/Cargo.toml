@@ -1,0 +1,6 @@
+[package]
+name = "number_of_substrings_containing_all_three_characters"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

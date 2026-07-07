@@ -1,0 +1,6 @@
+[package]
+name = "concatenate_non-zero_digits_and_multiple_by_sum1"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

@@ -1,0 +1,6 @@
+[package]
+name = "gcd_of_odd_and_even_sums"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

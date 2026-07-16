@@ -1,0 +1,6 @@
+[package]
+name = "sum_of_gcd_of_formed_pairs"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

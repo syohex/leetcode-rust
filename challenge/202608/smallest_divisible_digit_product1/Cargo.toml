@@ -1,0 +1,6 @@
+[package]
+name = "smallest_divisible_digit_product1"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

@@ -1,0 +1,6 @@
+[package]
+name = "smallest_missing_integer_greater_than_sequential_prefix_sum"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

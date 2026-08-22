@@ -1,0 +1,6 @@
+[package]
+name = "check_divisibility_by_digit_sum_and_product"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

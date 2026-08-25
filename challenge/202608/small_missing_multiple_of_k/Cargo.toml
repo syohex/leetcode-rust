@@ -1,0 +1,6 @@
+[package]
+name = "small_missing_multiple_of_k"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

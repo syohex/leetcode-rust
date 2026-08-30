@@ -1,0 +1,6 @@
+[package]
+name = "removing_minimum_and_maximum_from_array"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

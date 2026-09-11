@@ -1,0 +1,6 @@
+[package]
+name = "unique_3_digit_even_numbers"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

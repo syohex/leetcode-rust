@@ -1,0 +1,6 @@
+[package]
+name = "smallest_index_with_digit_sum_equal_to_index"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

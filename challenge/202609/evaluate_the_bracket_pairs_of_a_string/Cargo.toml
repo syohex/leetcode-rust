@@ -1,0 +1,6 @@
+[package]
+name = "evaluate_the_bracket_pairs_of_a_string"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

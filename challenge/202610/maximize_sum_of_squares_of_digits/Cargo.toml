@@ -1,0 +1,6 @@
+[package]
+name = "maximize_sum_of_squares_of_digits"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

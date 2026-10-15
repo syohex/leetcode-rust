@@ -1,0 +1,6 @@
+[package]
+name = "subarrays_distinct_element_sum_of_squares1"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

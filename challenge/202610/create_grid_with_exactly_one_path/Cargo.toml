@@ -1,0 +1,6 @@
+[package]
+name = "create_grid_with_exactly_one_path"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

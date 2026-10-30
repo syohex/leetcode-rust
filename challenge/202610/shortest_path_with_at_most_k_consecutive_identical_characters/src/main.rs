@@ -8,13 +8,13 @@ fn shortest_path(n: i32, edges: Vec<Vec<i32>>, labels: String, k: i32) -> i32 {
     let mut graph = vec![vec![]; n];
     for e in edges {
         let (from, to, weight) = (e[0] as usize, e[1] as usize, e[2]);
-        graph[from].push((to, weight));
+        graph[from].push((to, weight as i64));
     }
 
     let mut pq = BinaryHeap::new();
-    pq.push((Reverse(0), 0, 1));
+    pq.push((Reverse(0i64), 0, 1));
 
-    let mut min_weights = vec![vec![i32::MAX; k + 1]; n];
+    let mut min_weights = vec![vec![i64::MAX; k + 1]; n];
     min_weights[0][1] = 0;
 
     while let Some((Reverse(w), node, count)) = pq.pop() {
@@ -22,20 +22,24 @@ fn shortest_path(n: i32, edges: Vec<Vec<i32>>, labels: String, k: i32) -> i32 {
             continue;
         }
         if node == n - 1 {
-            return w;
+            return w as i32;
         }
 
         for (next, weight) in &graph[node] {
             let new_count = if label[node] == label[*next] {
                 count + 1
             } else {
-                count
+                1
             };
             if new_count > k {
                 continue;
             }
 
-            pq.push((Reverse(w + weight), *next, new_count));
+            let new_weight = w + weight;
+            if new_weight < min_weights[*next][new_count] {
+                min_weights[*next][new_count] = new_weight;
+                pq.push((Reverse(new_weight), *next, new_count));
+            }
         }
     }
 

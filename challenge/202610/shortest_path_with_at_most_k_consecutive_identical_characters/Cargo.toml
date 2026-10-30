@@ -1,0 +1,6 @@
+[package]
+name = "shortest_path_with_at_most_k_consecutive_identical_characters"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

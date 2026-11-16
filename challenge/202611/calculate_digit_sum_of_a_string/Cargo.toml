@@ -1,0 +1,6 @@
+[package]
+name = "calculate_digit_sum_of_a_string"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

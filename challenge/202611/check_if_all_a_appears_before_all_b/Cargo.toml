@@ -1,0 +1,6 @@
+[package]
+name = "check_if_all_a_appears_before_all_b"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
